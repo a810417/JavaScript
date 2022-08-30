@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04Object.html</title>
+</head>
+
+<body>
+    <div id="myDiv"></div>
+    <script>
+        //*****************************
+        //傳統函數：依呼叫的方法而定(函數宣告,匿名函數)
+        //箭頭函數：繫結到其宣告時所在的物件
+        //箭頭函數當中的 this 是宣告時的物件，而不是呼叫時的物件        
+        //一般函數在建立時是在 window 下，
+        //所以在 window 下使用箭頭函數自然會指向 window，
+        //要確實將箭頭函數宣告在物件內部，這樣 this 才會指向該物件。        
+        //*****************************
+        let car = {
+            brand: "Ferrari",
+            "max speed": 350,
+            color: "red",
+            display: () => {
+                // this 指向 Window，而不是 car
+                console.log(this);
+                return `${car.brand}, ${car.color}, ${car["max speed"]}`
+            },
+            display1: function () {
+                console.log(this);
+                return `${this.brand}, ${this.color}, ${this["max speed"]}`
+            }
+        }
+        // console.log(car);
+        // console.log(car.brand);
+        // console.log(car.color);
+        // console.log(car["max speed"]);
+        // console.log(car.display(), this);
+        // console.log(car.display1(), this);
+
+        //for..in
+        let myDiv = document.getElementById('myDiv');
+        for (let prop in car) {
+            console.log(prop);
+            console.log(car[prop]);
+            // myDiv.innerHTML += "<li>car[" + prop + "]:" + car[prop] + "</li>";
+            myDiv.innerHTML += `<li>car[${prop}]: ${car[prop]}</li>`;
+        }
+
+
+    </script>
+</body>
+
+</html>

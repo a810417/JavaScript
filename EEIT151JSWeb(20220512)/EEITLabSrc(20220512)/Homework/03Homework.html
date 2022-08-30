@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="zh-Hant-TW">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Homework 03</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Mouse+Memoirs&family=Rampart+One&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        #box {
+            /* width: 500px; */
+            /* border: 2px solid black; */
+            margin: 30px auto;
+            /* background-color: aqua; */
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px;
+        }
+
+        img {
+            width: 5rem;
+            height: 5rem;
+            cursor: pointer;
+        }
+
+        div {
+            margin: 20px auto;
+        }
+
+        figcaption {
+            text-align: center;
+            margin: 30PX;
+        }
+
+        .off {
+            filter: grayscale(1);
+        }
+
+        .on {
+            filter: grayscale(0);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>請給予評分</h1>
+    <div id="box">
+        <figure>
+            <div id="img">
+
+            </div>
+            <figcaption>單擊可評分，點擊兩下可重置</figcaption>
+            <span id="sp"></span>
+
+        </figure>
+    </div>
+
+    <script>
+
+        for (let i = 1; i <= 5; i++) {
+            let imgElement = document.getElementById("img");
+            imgElement.innerHTML += `<img id="img${i}" class="off" src="./03Homework_Image/cat.png" alt="Oops!">`;
+        }
+
+        function picOn(e) {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`img${i}`).className = "on";
+                if (`img${i}` == e.target.id) {
+                    let comment = ["喵", "喵喵", "很喵", "非常喵", "太喵了吧!"]
+                    // document.getElementById("sp").innerHTML = `${i}星評價`
+                    document.getElementById("sp").innerHTML = comment[i - 1];
+                    break;
+                }
+            }
+        }
+        function picOff(e) {
+            for (let j = 1; j <= 5; j++) {
+                document.getElementById(`img${j}`).className = "off";
+            }
+        }
+
+        function click(e) {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`img${i}`).removeEventListener("mouseover", picOn);
+                document.getElementById(`img${i}`).removeEventListener("mouseout", picOff);
+
+            }
+        }
+
+        function dblclick(e) {
+            for (let j = 1; j <= 5; j++) {
+                document.getElementById(`img${j}`).className = "off";
+                document.getElementById(`img${j}`).addEventListener("mouseover", picOn);
+                document.getElementById(`img${j}`).addEventListener("mouseout", picOff);
+                document.getElementById(`sp`).innerHTML = `<span id="sp"></span>`;
+            }
+        }
+
+        for (let k = 1; k <= 5; k++) {
+            document.getElementById(`img${k}`).addEventListener("mouseover", picOn);
+            document.getElementById(`img${k}`).addEventListener("mouseout", picOff);
+            document.getElementById(`img${k}`).addEventListener("click", click);
+            document.getElementById(`img${k}`).addEventListener("dblclick", dblclick);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

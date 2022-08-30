@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Homework 02</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        fieldset {
+            width: 600px;
+            margin: 15px;
+            border: 3px #D2E9FF solid;
+            border-radius: 15px;
+            text-align: center;
+            margin: auto;
+        }
+
+        legend {
+            font-size: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-style: italic;
+            color: #D9B300;
+
+        }
+
+        .st1 {
+            width: 600px;
+            margin: 10px;
+            padding: 15px;
+            border-bottom: 3px dashed gray;
+        }
+
+        .sub {
+            width: 400px;
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .t1 {
+            width: 100px;
+            float: left;
+            text-align: right;
+        }
+
+        select option[value=""] {
+            display: none;
+        }
+
+        .pwdPic {
+            width: 10px;
+            height: 10px;
+        }
+
+        .fc {
+            color: grey;
+            font-size: small;
+            text-align: left;
+            margin-left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>個人資料</legend>
+            <div class="st1">
+                <figure>
+                    <label for="name1" class="t1">姓名：</label>
+                    <input type="text" id="name1" name="name" placeholder="guest" autofocus autocomplete="off">
+                    <span id="idspName"></span><br />
+                    <figcaption class="fc"><br />(1.不可空白, 2.至少輸入2個字以上, 3.必須全部為中文字)</figcaption>
+                </figure>
+
+            </div>
+            <div class="st1">
+                <figure>
+                    <label for="idPwd" class="t1">密碼：</label>
+                    <input type="password" name="pwd" id="idPwd" maxlength="12" placeholder="P@ssword" required>
+                    <span id="idsp"></span><br />
+                    <figcaption class="fc"><br />(1.不可空白, 2.請輸入6~12個字, 3.必須包含英數字、特殊字元[!@#$%^&*])</figcaption>
+                </figure>
+
+            </div>
+            <div class="st1">
+                <figure>
+                    <label for="date1" class="t1">日期：</label>
+                    <input type="text" id="date1" maxlength="10" placeholder="yyyy/mm/dd">
+                    <span id="idspDate"></span><br />
+                    <figcaption class="fc"><br />格式：西元年/月/日(yyyy/mm/dd)</figcaption>
+                </figure>
+
+            </div>
+        </fieldset>
+        <div class="sub">
+            <input type="submit" value="送出">
+            <input type="reset" value="清除">
+        </div>
+
+
+        <script>
+            document.getElementById("name1").addEventListener("blur", checkName);
+            function checkName() {
+                //取得idName、span元素
+                let theNameObj = document.getElementById("name1");
+                let sp = document.getElementById("idspName");
+                //取得idName值
+                let theNameObjVal = theNameObj.value;
+                let theNameObjValLen = theNameObjVal.length;
+                console.log(theNameObjVal);
+                // checkName
+                re = /^(?=.*[\u4e00-\u9fff])/;
+                if (theNameObjVal == "")
+                    sp.innerHTML = `<img src="./02Homework_Image/error.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 請輸入內容`;
+                else if (theNameObjValLen >= 2) {
+                    if (re.test(theNameObjVal)) {
+                        sp.innerHTML = `<img src="./02Homework_Image/check.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> correct`
+
+                    } else {
+                        sp.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 輸入格式不正確，需輸入中文字`;
+                    }
+                } else {
+                    sp.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 請至少輸入 2 個中文`;
+                }
+
+            }
+
+            document.getElementById("idPwd").addEventListener("blur", checkPwd);
+            function checkPwd() {
+                //取得idPwd元素
+                let thePwdObj = document.getElementById("idPwd");
+                let sp = document.getElementById("idsp");
+                //取得idPwd元素值
+                let thePwdObjVal = thePwdObj.value;
+                let thePwdObjValLen = thePwdObjVal.length;
+                console.log(thePwdObjVal);
+                // checkPwd
+                re = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,12}$/;
+                if (thePwdObjVal == "") {
+                    sp.innerHTML = `<img src="./02Homework_Image/error.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 請輸入內容`;
+                }
+                else if (thePwdObjValLen >= 6) {
+                    if (re.test(thePwdObjVal)) {
+                        sp.innerHTML = `<img src="./02Homework_Image/check.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> correct`
+
+                    } else {
+                        sp.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 輸入格式不正確，至少須包含英數字、特殊字元[!@#$%^&*]`;
+                    }
+                } else {
+                    sp.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 請至少輸入 6 個字元`;
+                }
+            }
+
+
+            document.getElementById("date1").addEventListener("blur", checkDate);
+            function checkDate() {
+                // 取得 date, sp 元素
+                let dateObj = document.getElementById("date1");
+                let spDate = document.getElementById("idspDate");
+                // 取得上面元素的值
+                let dateObjVal = dateObj.value;
+                let dateObjValLen = dateObjVal.length;
+
+                // checkDate
+                if (dateObjVal == "") {
+                    spDate.innerHTML = `<img src="./02Homework_Image/error.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 請輸入內容`;
+                } else if (dateObjValLen >= 10) {
+                    let today = new Date();
+
+                    let isValidDate = Date.parse(dateObjVal);
+                    if (isNaN(isValidDate)) {
+                        spDate.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 輸入錯誤，非有效日期`;
+                    } else if (isValidDate > today) {
+                        spDate.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 輸入錯誤，勿超過今日日期`;
+                    }
+                    else {
+                        if (isDateExist(dateObjVal)) {
+                            spDate.innerHTML = `<img src="./02Homework_Image/check.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> correct`
+                        } else {
+                            spDate.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 輸入錯誤，日期不存在`;
+                        }
+                    }
+                } else {
+                    spDate.innerHTML = `<img src="./02Homework_Image/cancel.png" style="align-items:center; width: 15px; height: 15px; margin: auto;"> 請至少輸入 10  個字元`;
+                }
+            }
+            document.getElementById("date1").addEventListener('keydown', function (e) {
+                // yyyy/mm/dd : 加斜線共10個字元
+                if (e.which !== 10) {
+                    var numChars = e.target.value.length;
+                    if (numChars === 4 || numChars === 7) {
+                        var thisVal = e.target.value;
+                        thisVal += '/';
+                        e.target.value = thisVal;
+                    }
+                }
+            });
+
+            function isDateExist(dateStr) {
+                var dateObj = dateStr.split('/'); // yyyy/mm/dd
+                // 設定每個月的天數
+                var dayInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                var theYear = parseInt(dateObj[0]);
+                var theMonth = parseInt(dateObj[1]);
+                var theDay = parseInt(dateObj[2]);
+                // 閏年2月份天數調整
+                var isLeap = new Date(theYear, 1, 29).getDate() === 29; // 是否為閏年?
+                if (isLeap) {
+                    dayInMonth[1] = 29;
+                }
+                // return Boolean值
+                return (theDay <= dayInMonth[theMonth - 1]);
+            }
+
+        </script>
+</body>
+
+</html>

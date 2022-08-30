@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05ArrayObject.html</title>
+</head>
+
+<body>
+    <script>
+        //Array 物件
+
+        let myfoods = [["apple", "banana", "grape"], ["pork", "beef"]];
+
+        //for loop
+        // for (let i = 0, maxi = myfoods.length; i < maxi; i++) {
+        //     for (let j = 0, maxj = myfoods[i].length; j < maxj; j++) {
+        //         console.log(myfoods[i][j]);
+        //     }
+        // }
+
+        //for, of
+        // for (food of myfoods) {
+        //     console.log(food); // 列印出兩個陣列 ["apple", "banana", "grape"] 和 ["pork", "beef"]
+        //     for (value of food) {
+        //         console.log(value); // 將兩個陣列中資料都個別印出
+        //     }
+        // }
+
+
+        //Array 方法
+
+        let balls = ["baseball", "basketball", "tennis", 123];
+        console.log(balls);
+
+        let arr = [3, 4, 5];
+        console.log(balls.concat(arr));
+        console.log(balls.join("-"))
+        console.log(balls);
+        console.log(balls.reverse());
+        console.log(balls);
+        balls.push("item1", "item2", "item3")
+        console.log(balls);
+        // console.log(balls.push("item1", "item2", "item3"));
+        // console.log(balls);
+        // balls.pop();
+        console.log(balls);
+        console.log(balls.slice(1, 5)); // index 1~4 的項目
+        balls.splice(1, 2, 1, 2, 3);
+        console.log(balls);
+        console.log(balls.splice(1, 2, 1, 2, 3));
+
+
+    </script>
+</body>
+
+</html>

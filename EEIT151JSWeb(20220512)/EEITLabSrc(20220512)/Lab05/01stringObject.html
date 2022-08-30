@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>01stringObject.html</title>
+</head>
+
+<body>
+    <div id="info"></div>
+    <script>
+        let str = "java script";  //字串變數        
+        //字串物件
+
+        let strObj = new String("java script hello");
+        console.log(`strObj.charAt(3)=${strObj.charAt(3)}`); // a
+        console.log(`strObj.charCodeAt(3)=${strObj.charCodeAt(3)}`); // a 的 ASCII: 97
+
+        console.log(`strObj.indexOf('a')=${strObj.indexOf('a')}`); // 第一個 a 的 index number: 1
+        console.log(`strObj.lastIndexOf('a')=${strObj.lastIndexOf('a')}`); // 最後一個 a 的 index number: 3
+        console.log(`strObj.lastIndexOf('@')=${strObj.lastIndexOf('@')}`); // 找不到: -1
+
+        console.log(`strObj.substr(5,3)=${strObj.substr(5, 3)}`); // index 5, 6, 7: scr
+        console.log(`strObj.substr(5)=${strObj.substr(5)}`); // index 5~end: script hello
+        console.log(`strObj.substring(5,8)=${strObj.substring(5, 8)}`); // index 5~7(不含 8): scr
+
+        console.log(`strObj.split(' ')=${strObj.split(' ')}`); // 用" "(空格)隔開: java,script,hello [字串，因前方和字串"串接" => 變成字串]
+        console.log(`strObj.split(' ', 2)=${strObj.split(' ', 2)}`); // 用" "(空格)隔開，只回傳 2 個: java,script
+        console.log(`strObj.split(' ', 1)=${strObj.split(' ', 1)}`); // 用" "(空格)隔開，只回傳 1 個: java
+        console.log(strObj.split(' ')); // 回傳 Array: ['java', 'script', 'hello']
+        console.log(`strObj.toUpperCase()=${strObj.toUpperCase()}`);
+
+
+        //中文字串
+        //作業: 驗證姓名欄位
+        let strObj2 = "嗨你好";
+        console.log(strObj2.charCodeAt(0));
+
+        for (i = 0; i < strObj2.length; i++) {
+            if (strObj2.charCodeAt(i) >= 0x4e00 && strObj2.charCodeAt(i) <= 0x9fff) {
+                console.log("中文字元");
+            } else {
+                console.log("非中文字元")
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

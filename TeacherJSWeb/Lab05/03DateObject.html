@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>03DateObject.html</title>
+</head>
+
+<body>
+    <script>
+        //建立日期物件語法 1
+        let d = new Date();
+        console.log(d);
+
+        //建立日期物件語法 2
+        d = new Date("2022-08-03");
+        console.log(d);
+        d = new Date("2022-8-3");
+        console.log(d);
+        d = new Date("2022-08-03T14:32:30");
+        console.log(d);
+        d = new Date("2022-8-3T14:32:30");  //Invalid Date
+        console.log(d);
+        d = new Date("2022-08-03T14:32:3");  //Invalid Date
+        console.log(d);
+        d = new Date("2022/8/3 14:32:30");  //
+        console.log(d);
+        d = new Date("2022/8/3 2:32:30 pm");  //
+        console.log(d);
+        d = new Date("2022/7/32");
+        console.log(d);
+        d = new Date("2022/6/31");
+        console.log(d);
+        d = new Date("2022/2/31");  //2022/2/31  2022/3/3
+        console.log(d);
+        d = new Date("2022/2/28");  //2022/2/28
+        console.log(d);
+
+        //建立日期物件語法 3
+        d = new Date(2022, 7, 3);
+        console.log(d);
+        d = new Date(2022, 1, 32);
+        console.log(d);
+
+        d = new Date();
+        let theYear = d.getFullYear() - 1911;
+        let theMonth = d.getMonth() + 1;
+        let theDate = d.getDate();
+        // console.log(d);
+        console.log(`民國${theYear}年${theMonth}月${theDate}日`);
+
+
+    </script>
+</body>
+
+</html>

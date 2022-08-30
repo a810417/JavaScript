@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Homework 05</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* div {
+            border: 2px solid red;
+        } */
+
+        .headline {
+            background-color: rgb(237, 158, 12);
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            align-items: center;
+        }
+
+        .left .right {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="headline">
+            <h1>月曆</h1>
+        </div>
+    </div>
+    <div class="left">
+        <h3>Welcome</h3>
+        <select name="sYear" id="opYear">
+            <option value="" selected="selected" disabled="disabled">Year</option>
+        </select><span>年</span>
+        <select name="sMonth" id="opMonth">
+            <option value="" selected="selected" disabled="disabled">Month</option>
+        </select><span>月</span>
+        <select name="sDate" id="opDate">
+            <option value="" selected="selected" disabled="disabled">Date</option>
+        </select><span>日</span>
+        <!-- <p id="dateChoose" class="dateChoose"></p> -->
+        <div class="out" id="calender"></div>
+    </div>
+    <div class="right"></div>
+    <script>
+        let myYear = document.getElementById("opYear");
+        let myMonth = document.getElementById("opMonth");
+        let myDate = document.getElementById("opDate");
+        // Year 選單
+        for (let i = 2010; i <= 2030; i++) {
+            myYear.innerHTML += `<option value="${i}">${i}</option>`;
+        }
+        // Month 選單
+        for (let i = 1; i <= 12; i++) {
+            myMonth.innerHTML += `<option value="${i}">${i}</option>`;
+        }
+        // Date 選單
+        myMonth.addEventListener("change", () => {
+            let tempDate = new Date(myYear.value, myMonth.value, 0);
+            let days = "";
+            for (let i = 1; i <= tempDate.getDate(); i++) {
+                days += `<option value="${i}">${i}</option>`
+            }
+            myDate.innerHTML = days;
+        })
+
+        myDate.addEventListener("change", () => {
+            let selectedY = myYear.value;
+            let selectedM = myMonth.value;
+            let selectedD = myDate.value;
+            let selectedDate = new Date(selectedY, selectedM, selectedD);
+            console.log(selectedY, selectedM, selectedD);
+            console.log(selectedDate);
+
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>01functionMethod.html</title>
+</head>
+
+<body>
+    <script>
+        //==========定義函數==================
+        //方法一函數宣告，定義帶參數的函數
+        function fAdd1(x, y) {
+            return x + y;
+        }
+        function fAdd2(x = 10, y = 20) {
+            return x + y;
+        }
+
+
+
+
+        //==========函數呼叫==================
+        //呼叫帶參數的函數
+        console.log(`fAdd1(5, 10) = ${fAdd1(5, 10)}`);
+
+
+        //JavaScript沒有規定function的參數及呼叫function時給予的參數數量必須要一致
+        //少掉的參數為undefined，而多的參數會被忽略
+        //預設參數值(ES6)
+        console.log(`fAdd1(5) = ${fAdd1(5)}`); // NaN
+        console.log(`fAdd1(5, 10, 50) = ${fAdd1(5, 10, 50)}`); // 15, 50 為多出來的參數，被忽略
+
+        console.log(`fAdd2(7) = ${fAdd2(7)}`); // 少參數，等於只輸入第一個 x，但有預設 x, y 的值，所以自動用預設補上 -> 7+20
+
+
+
+        //==========定義函數==================
+        //方法二暱名函數
+
+        let f = function (x, y) { return x * y }
+
+        console.log(`f(4, 5) = ${f(4, 5)}`);
+        (function (x, y) { return x * y })(100, 20);
+
+
+
+
+        //==========定義函數==================
+        //方法三箭頭函數(arrow function)
+        let fAdd3 = (a, b) => { return (a + b); }
+        console.log(`fAdd3(200, 300) = ${fAdd3(200, 300)}`)
+
+        //函數沒有參數
+        let fAdd4 = () => { return (1000); }
+        console.log(`fAdd4() = ${fAdd4()}`);
+
+        //如果statement 只有一行，return 和 {} 可省略
+        let fAdd5 = (a, b) => a + b;
+        console.log(`fAdd5(250, 350) = ${fAdd5(250, 350)}`)
+
+        //只有一個參數，()可省略
+        let fAdd6 = a => { return (a + 1000); }
+        console.log(`fAdd6(500) = ${fAdd6(500)}`)
+
+        //呼叫函數 functionName()
+        console.log(`fAdd6(100) = ${fAdd6(100)}`)
+
+        //列印函數內容
+        console.log(`fAdd6 = ${fAdd6}`)
+        console.log(`fAdd1 = ${fAdd1}`)
+        fAdd6 = fAdd1;
+        console.log(`fAdd6 = ${fAdd6}`)
+
+    </script>
+</body>
+
+</html>

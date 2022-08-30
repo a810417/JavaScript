@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>02DataTypes.html</title>
+</head>
+
+<body>
+    <script>
+        //數字變數
+        var a = 10;
+        console.log(typeof (a));
+
+        //字串變數
+        var a = "Hello";
+        console.log(typeof (a));
+
+
+        //布林變數             
+        var b = true;
+        var c = b + 1;
+        console.log(`b = ${b}, typeof b = ${typeof b}`);
+        console.log(`c = ${c}, typeof c = ${typeof c}`);
+        if (c) { console.log(true); }
+        else { console.log(false); }
+
+        //null
+        let n = null;
+        console.log(`n = ${n}, typeof n = ${typeof n}`); // null, object
+
+        //如果沒有初始值，JavaScript會自動將變數的值初始化為undefined(預設值 default value)    
+        let u;
+        console.log(`u = ${u}, typeof u = ${typeof u}`); // undefined, undefined
+        console.log(`u+n = ${u + n}, typeof u+n = ${typeof (u + n)}`); // NaN, number
+
+        //字串轉換為數值
+        console.log(`parseInt("123.45")=${parseInt("123.45")}`); // 123
+        console.log(`parseInt("12a3.45")=${parseInt("12a3.45")}`); // 12
+        console.log(`parseInt("a123.45")=${parseInt("a123.45")}`); // NaN
+
+        console.log(`Number("123.45")=${Number("123.45")}`); // 123.45
+        console.log(`Number("12a3.45")=${Number("12a3.45")}`); // NaN
+        console.log(`Number("a123.45")=${Number("a123.45")}`); // NaN
+
+        console.log(`parseFloat("123.45")=${parseFloat("123.45")}`); // 123.45
+        console.log(`parseFloat("12a3.45")=${parseFloat("12a3.45")}`); // 12
+        console.log(`parseFloat("a123.45")=${parseFloat("a123.45")}`); // NaN
+
+        //數值轉換為字串
+        let price = 12.6;
+        console.log(typeof price); // number    
+        console.log("price=$" + price); // price=$12.6
+        console.log(typeof ("price=$" + price)); // string
+        console.log(`price=$${price}`); // price=$12.6
+        console.log(typeof `price=$${price}`); // string
+
+
+    </script>
+</body>
+
+</html>

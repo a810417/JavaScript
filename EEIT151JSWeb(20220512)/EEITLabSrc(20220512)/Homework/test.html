@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class='calendar' id='calendar'></div>
+    <script type='text/javascript'>
+        var d1 = new Date();  // 獲取當前系統時間 我現在的時間是 2016年4月25日 星期一
+        d1.getFullYear();    // 獲取年資訊， 2016
+        d1.getMonth();      // 獲取月資訊（從0開始 範圍：0-11） 3
+        d1.getDate();      // 獲取天資訊 此處結果：25
+        d1.getDay();      // 獲取星期資訊 （0-6） 此處結果： 1 
+        // # 設定 2022年8月15日
+        var d2 = new Date(2022, 8, 15);    // 月是從0開始計數， 需要減一
+        d2.getFullYear();          // 2022
+        d2.getMonth();            // 8
+        d2.getDate();            // 15
+        d2.toLocaleDateString();      // "2022/8/15" 證明設定正確 
+
+
+    </script>
+</body>
+
+</html>

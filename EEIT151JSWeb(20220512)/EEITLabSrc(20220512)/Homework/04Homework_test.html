@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Homework 04 - Carousel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* background-color: rgba(0, 0, 0, 0.94); */
+        }
+
+        body {
+            background-color: rgba(0, 0, 0, 0.94);
+
+        }
+
+        div.box {
+            display: flex;
+            margin: 2px auto;
+            text-align: center;
+        }
+
+        img#logo {
+            width: 0%;
+            /* height: 20%; */
+
+        }
+
+        /* div#text {
+            box-sizing: content-box;
+            margin: 0;
+            padding: 0;
+            color: white;
+
+
+        } */
+
+        .leftBox {
+            justify-content: center;
+            background-color: blue;
+            border: 2px solid aqua;
+            display: inline;
+            margin: 2px auto;
+            margin-left: -100px;
+        }
+
+        .middleBox {
+            justify-content: center;
+            background: yellow;
+            border: 2px solid yellowgreen;
+            display: inline;
+            margin: 2px auto;
+        }
+
+        .rightBox {
+            justify-content: center;
+            background-color: orange;
+            border: 2px solid orangered;
+            display: inline;
+            margin: 2px auto;
+            margin-right: -50%;
+        }
+
+        img {
+            width: 600px;
+            height: 350px;
+            z-index: 1;
+
+        }
+
+        #board {
+            width: 600px;
+            height: 350px;
+            background-color: rgba(0, 0, 0, 0.106);
+            z-index: 2;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./04Homework_Image/IMDB_Logo.png" alt="" id="logo">
+    <!-- <div id="box"> </div> -->
+    <div class="leftBox">
+        <!-- <div id="board"></div> -->
+        <img alt="" id="left">
+    </div>
+    <div class="middleBox">
+        <img alt="" id="middle">
+    </div>
+    <div class="rightBox">
+        <!-- <div id="board"></div> -->
+        <img alt="" id="right">
+    </div>
+    </div>
+
+    <script>
+        function leftPic() {
+            let d = new Date();
+
+            let s = d.getSeconds();
+            let s1 = s % 10;
+            document.getElementById("left").src = `./04Homework_Image/${s1}.jpg`;
+        }
+
+        function middlePic() {
+            let d = new Date();
+
+            let s = d.getSeconds();
+            let s2 = (s + 1) % 10;
+            document.getElementById("middle").src = `./04Homework_Image/${s2}.jpg`;
+        }
+        function rightPic() {
+            let d = new Date();
+
+            let s = d.getSeconds();
+            let s3 = (s + 2) % 10;
+            document.getElementById("right").src = `./04Homework_Image/${s3}.jpg`;
+        }
+
+        // //顯示圖片，對應秒數
+        // function setClock() {
+        //     //建立日期
+        //     let d = new Date();
+
+        //     //取得秒數，分割為兩位數
+        //     let s = d.getSeconds();
+        //     let s1 = parseInt(s / 10);
+        //     let s2 = s % 10;
+        //     document.getElementById("picS1").src = "WinImages/" + s1 + ".gif";
+        //     document.getElementById("picS2").src = `WinImages/${s2}.gif`;
+        // }
+        leftPic();
+        middlePic();
+        rightPic();
+        window.setInterval(leftPic, 1000);
+        window.setInterval(middlePic, 1000);
+        window.setInterval(rightPic, 1000);
+
+    </script>
+</body>
+
+</html>

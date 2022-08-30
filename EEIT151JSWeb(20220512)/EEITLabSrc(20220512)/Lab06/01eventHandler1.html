@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>01eventHandler1.html</title>
+</head>
+
+<body>
+    <!--HTML屬性事件處理程序-->
+    <h1 onclick="f1()">Method 1</h1>
+
+
+    <!-- JavaScript屬性事件處理程序 -->
+    <h1 id="m2">Method 2</h1>
+
+    <!-- W3C DOM 事件處理程序 -->
+    <h1 id="m3">Method 3</h1>
+    <script>
+        function
+            // calling function f1 寫在 HTML 中
+            f1() {
+            alert("Method 1");
+        }
+        function
+            // 在 JavaScript 中以 object 呼叫 function f2
+            f2() {
+            alert("Method 2");
+        }
+        function
+            // JavaScript 中透過 .addEventListener 觀察事件再 calling function f3
+            f3() {
+            alert("Method 3")
+        }
+        document.getElementById("m2").onclick = f2;
+        document.getElementById("m3").addEventListener("click", f3);
+
+    </script>
+</body>
+
+</html>
